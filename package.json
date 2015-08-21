@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-markdown-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pre-process markdown into HTML children that gets set with dangerouslySetInnerHTML",
   "main": "lib/index.js",
   "scripts": {
