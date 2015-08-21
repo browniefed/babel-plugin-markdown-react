@@ -28,7 +28,7 @@ function detectSpacing(_stringArray) {
 }
 
 export default function ({ Plugin, types: t }) {
-  return new Plugin("plugin-markdown-to-html", {
+  return new Plugin("babel-plugin-markdown-react", {
     metadata: {
       group: "builtin-basic"
     },

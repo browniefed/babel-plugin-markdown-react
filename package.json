@@ -1,5 +1,5 @@
 {
-  "name": "markdown-react-plugin",
+  "name": "babel-plugin-markdown-react",
   "version": "1.0.2",
   "description": "Pre-process markdown into HTML children that gets set with dangerouslySetInnerHTML",
   "main": "lib/index.js",
@@ -14,18 +14,21 @@
     "babel": "^5.8.21",
     "react": "^0.13.3"
   },
-  "_shasum": "03e972473bc9515dd9e05afe7dee4ef86e91a1ab",
-  "_from": "browniefed/markdown-react-babel-plugin",
-  "_resolved": "git://github.com/browniefed/markdown-react-babel-plugin.git#77ca3f56a5893581ee9cd8fd6619d40ed6a9edb1",
   "dependencies": {
     "remarkable": "^1.6.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/browniefed/markdown-react-babel-plugin.git"
+    "url": "git+https://github.com/browniefed/babel-plugin-markdown-react.git"
   },
+  "keywords": [
+    "babel-plugin",
+    "babel",
+    "react",
+    "markdown"
+  ],
   "bugs": {
-    "url": "https://github.com/browniefed/markdown-react-babel-plugin/issues"
+    "url": "https://github.com/browniefed/babel-plugin-markdown-react/issues"
   },
-  "homepage": "https://github.com/browniefed/markdown-react-babel-plugin#readme"
+  "homepage": "https://github.com/browniefed/babel-plugin-markdown-react#readme"
 }
