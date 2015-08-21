@@ -1,12 +1,9 @@
 import _ from "lodash";
-import mdast from "mdast";
-import reactRenderer from "mdast-react";
+import Remarkable from "remarkable";
+import * as babel from "babel-core";
+
 const NEW_LINE = "\n";
 const SPACE = " ";
-
-import Remarkable from "remarkable";
-import React from "react";
-import * as babel from "babel-core";
 
 function isStringEmpty(str) {
     return !_.trim(str) 
