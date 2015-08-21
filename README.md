@@ -1,11 +1,6 @@
 # markdown-react-babel-plugin
 
-This plugin will use remarkable to pre-process all markdown within a Markdown component to HTML.
-It is then set with `dangerouslySetInnerHTML`.
-
-## Future?
-
-Future work will hopefully be done to convert to React elements so we can take advantage of React diffing, although just setting innerHTML might be faster(?).
+This plugin will use remarkable to pre-process all markdown within a Markdown component. Then we parse that HTML with babel into an AST and just replace the Markdown children node with the parsed AST.
 
 ## Example
 
