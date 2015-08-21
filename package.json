@@ -13,5 +13,8 @@
   "devDependencies": {
     "babel": "^5.8.21",
     "react": "^0.13.3"
+  },
+  "dependencies": {
+    "remarkable": "^1.6.0"
   }
 }
