@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-markdown-react",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Pre-process markdown into React.createElement children",
   "main": "lib/index.js",
   "scripts": {
