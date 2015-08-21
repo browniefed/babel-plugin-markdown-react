@@ -1,9 +1,12 @@
 import _ from "lodash";
-import Remarkable from "remarkable";
-
+import mdast from "mdast";
+import reactRenderer from "mdast-react";
 const NEW_LINE = "\n";
 const SPACE = " ";
 
+import Remarkable from "remarkable";
+import React from "react";
+import * as babel from "babel-core";
 
 function isStringEmpty(str) {
     return !_.trim(str) 
@@ -33,15 +36,16 @@ export default function ({ Plugin, types: t }) {
       group: "builtin-basic"
     },
     visitor: {
-      JSXElement(node) {
-        
+      JSXElement(node) {        
         if (this.isJSXElement(node) && node.openingElement.name.name === 'Markdown' && node.children.length === 1) {
             var md = new Remarkable("full");
             var strings = node.children[0].raw.split(NEW_LINE);
             var spacing = detectSpacing(strings);
             var content = _(strings).map((str) => _.drop(str, spacing).join('')).value().join(NEW_LINE);
 
-            node.children[0].value = node.children[0].raw = md.render(content);
+            var markdownAST = babel.parse('<div>' + NEW_LINE + md.render(content) + NEW_LINE + '</div>');
+
+            node.children = [markdownAST.body[0].expression]
         }
       }
     }
