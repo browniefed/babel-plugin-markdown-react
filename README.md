@@ -9,7 +9,7 @@ Future work will hopefully be done to convert to React elements so we can take a
 
 ## Example
 
-`npm install babel babel-core markdown-react-babel-plugin --save`
+`npm install babel babel-core babel-plugin-markdown-react --save`
 
 Follow the guidelines here [https://babeljs.io/docs/advanced/plugins/](https://babeljs.io/docs/advanced/plugins/) to work the plugin into your asset pipeline.
 
