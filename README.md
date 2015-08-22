@@ -2,9 +2,6 @@
 
 This plugin will use remarkable to pre-process all markdown within a Markdown component. Then we parse that HTML with babel into an AST and just replace the Markdown children node with the parsed AST.
 
-
-# This is very much a work in progress, still attempting to figure things out.
-
 ## Example
 
 `npm install babel babel-core babel-plugin-markdown-react --save`
