@@ -14,6 +14,8 @@ export default class RenderMarkdown extends React.Component {
                 var b = 2;
                 var c = a + b;
                 console.log(c);
+                ```
+                
             </Markdown>
         )
     }

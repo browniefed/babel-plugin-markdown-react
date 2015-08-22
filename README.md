@@ -15,7 +15,7 @@ Follow the guidelines here [https://babeljs.io/docs/advanced/plugins/](https://b
 
 ```
 import React from "react";
-import Markdown from "markdown-react-babel-plugin/markdown";
+import Markdown from "babel-plugin-markdown-react/markdown";
 
 
 export default class RenderMarkdown extends React.Component {
