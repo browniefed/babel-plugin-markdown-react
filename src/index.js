@@ -2,6 +2,8 @@ import _ from "lodash";
 import Remarkable from "remarkable";
 import * as babel from "babel-core";
 
+var hljs = require('highlight.js');
+
 const NEW_LINE = "\n";
 const SPACE = " ";
 
@@ -36,9 +38,20 @@ export default function ({ Plugin, types: t }) {
       JSXElement(node) {        
         if (this.isJSXElement(node) && node.openingElement.name.name === 'Markdown' && node.children.length === 1) {
             var md = new Remarkable("full", {
-                  highlight: function (str, lang) {
-                    return str.split(NEW_LINE).join('<br />');
-                  }
+                highlight: function (str, lang) {
+                    var code = '';
+                    if (lang && hljs.getLanguage(lang)) {
+                      try {
+                        code = hljs.highlight(lang, str).value;
+                      } catch (err) {}
+                    }
+
+                    try {
+                      code = hljs.highlightAuto(str).value;
+                    } catch (err) {}
+                    
+                    return code.replace(/class=/g, 'className=').split(NEW_LINE).join('{String.fromCharCode(10)}')
+                }
             });
             var strings = node.children[0].raw.split(NEW_LINE);
             var spacing = detectSpacing(strings);

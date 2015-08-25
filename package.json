@@ -12,13 +12,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.21",
-    "react": "^0.13.3",
-    "lodash": "^3.10.1"
-  },
-  "dependencies": {
     "babel-core": "^5.8.21",
+    "highlight.js": "^8.7.0",
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
     "remarkable": "^1.6.0"
   },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/browniefed/babel-plugin-markdown-react.git"
