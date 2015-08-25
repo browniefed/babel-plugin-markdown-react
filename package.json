@@ -12,7 +12,8 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.21",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "lodash": "^3.10.1"
   },
   "dependencies": {
     "babel-core": "^5.8.21",
