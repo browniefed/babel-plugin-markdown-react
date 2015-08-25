@@ -1,11 +1,10 @@
-import _ from "lodash";
-import Remarkable from "remarkable";
-import * as babel from "babel-core";
-
-var hljs = require('highlight.js');
-
 const NEW_LINE = "\n";
 const SPACE = " ";
+
+import _ from "lodash";
+import marked from "marked";
+import * as babel from "babel-core";
+import hljs from "highlight.js";
 
 function isStringEmpty(str) {
     return !_.trim(str) 
@@ -37,27 +36,34 @@ export default function ({ Plugin, types: t }) {
     visitor: {
       JSXElement(node) {        
         if (this.isJSXElement(node) && node.openingElement.name.name === 'Markdown' && node.children.length === 1) {
-            var md = new Remarkable("full", {
-                highlight: function (str, lang) {
-                    var code = '';
-                    if (lang && hljs.getLanguage(lang)) {
-                      try {
-                        code = hljs.highlight(lang, str).value;
-                      } catch (err) {}
-                    }
+            var renderer = new marked.Renderer();
+            var codeRenderer = renderer.code;
 
-                    try {
-                      code = hljs.highlightAuto(str).value;
-                    } catch (err) {}
-                    
-                    return code.replace(/class=/g, 'className=').split(NEW_LINE).join('{String.fromCharCode(10)}')
-                }
+            renderer.code = function() {
+                var renderCode = codeRenderer.apply(renderer, _.toArray(arguments));
+                return renderCode.replace(/\<code\>/g, '<code class="hljs">').split(NEW_LINE).join('{String.fromCharCode(10)}')
+            }
+
+
+            marked.setOptions({
+              renderer: renderer,
+              gfm: true,
+              tables: true,
+              breaks: false,
+              pedantic: false,
+              sanitize: true,
+              smartLists: true,
+              smartypants: false,
+              highlight: function (code) {
+                return hljs.highlightAuto(code).value;
+              }
             });
+
             var strings = node.children[0].raw.split(NEW_LINE);
             var spacing = detectSpacing(strings);
             var content = _(strings).map((str) => _.drop(str, spacing).join('')).value().join(NEW_LINE);
 
-            var markdownAST = babel.parse('<div>' + NEW_LINE + md.render(content) + NEW_LINE + '</div>');
+            var markdownAST = babel.parse('<div>' + NEW_LINE + marked(content).replace(/class=/g, 'className=') + NEW_LINE + '</div>');
 
             node.children = [markdownAST.body[0].expression]
         }

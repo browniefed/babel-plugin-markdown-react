@@ -15,8 +15,7 @@
     "babel-core": "^5.8.21",
     "highlight.js": "^8.7.0",
     "lodash": "^3.10.1",
-    "react": "^0.13.3",
-    "remarkable": "^1.6.0"
+    "marked": "^0.3.5"
   },
   "dependencies": {},
   "repository": {
