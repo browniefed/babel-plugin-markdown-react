@@ -35,7 +35,11 @@ export default function ({ Plugin, types: t }) {
     visitor: {
       JSXElement(node) {        
         if (this.isJSXElement(node) && node.openingElement.name.name === 'Markdown' && node.children.length === 1) {
-            var md = new Remarkable("full");
+            var md = new Remarkable("full", {
+                  highlight: function (str, lang) {
+                    return str.split(NEW_LINE).join('<br />');
+                  }
+            });
             var strings = node.children[0].raw.split(NEW_LINE);
             var spacing = detectSpacing(strings);
             var content = _(strings).map((str) => _.drop(str, spacing).join('')).value().join(NEW_LINE);
