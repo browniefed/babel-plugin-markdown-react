@@ -1,4 +1,7 @@
-# babel-plugin-markdown-react
+# THIS IS DEPRECATED | NO MAINTENANCE
+This targets babel 5 and was just a fun idea. Do not use this seriously. 
+
+## babel-plugin-markdown-react
 
 This plugin will use remarkable to pre-process all markdown within a Markdown component. Then we parse that HTML with babel into an AST and just replace the Markdown children node with the parsed AST.
 
